@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block title %}Add new sloc entry{% endblock %}
+{% block content %}
+<h2>Add a new sloc entry</h2>
+<p style="color:red;">{{ error }}</p>
+<style>div{padding-bottom:5px;}</style>
+<form action="/sloc/add" method="POST">
+    <div class="fieldWrapper">
+        {{ form.sloc.errors }}
+        <label for="id_sloc">Source Lines of Code (must be an integer):</label><br />
+        {{ form.sloc }}
+    </div>
+    <div class="fieldWrapper">
+        {{ form.language.errors }}
+        <label for="id_language">Programming Language:</label><br />
+        {{ form.language }}
+    </div>
+    <div class="fieldWrapper">
+        {{ form.segment.errors }}
+        <label for="id_segment">Segment:</label><br />
+        {{ form.segment }}
+    </div>
+    <div class="fieldWrapper">
+       {{ form.sloc_type.errors }}
+       <label for="sloc_type">Type of SLOC:</label><br />
+       {{ form.sloc_type }}
+    </div>
+    <div class="fieldWrapper">
+        {{ form.generated_date.errors }}
+        <label for="id_segment">Date the sloc data is for (must be in yyyy-mm-dd form):</label><br />
+        {{ form.generated_date }}
+    </div>
+    <div class="fieldWrapper">
+        {{ form.reported_by.errors }}
+        <label for="id_reported_by">Reported by:</label><br />
+        {{ form.reported_by }}
+    </div>
+    <p><input type="submit" value="Submit"></p>
+</form>
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %}Details for {{ segment.name }}{% endblock %}
+{% block content %}
+<h2>Details for {{ segment.name }}</h2>
+<div>
+    <ul>
+        <li><b>Description:</b> "{{ segment.description }}"</li>
+        <li><b>Directory path used:</b> "{{ segment.directory_path_used }}"</li>
+        <li><b>Branch:</b> "{{ segment.branch }}"</li>
+        <li><b>CSV Export:</b> <a href="{% url sloc.views.segment_detail segment.id %}/segment.csv">click here to download</a></li>
+    </ul>
+</div>
+
+<h3>Sloc History</h3>
+<span>This is limited to 20 of the most recent SLOCs that have been reported. Use a CSV export to download all known SLOC entries.</span>
+{% if slocs %}
+    <ul>
+    {% for sloc in slocs %}
+        <li>For "{{ sloc.generated_date.date}}", an sloc of "{{ sloc.source_lines_of_code }}" ("{{sloc.sloc_type}}") was reported for the "{{ sloc.language }}" language by "{{ sloc.reported_by }}" on "{{ sloc.created_date }}".</li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No slocs are available for this segment.</p>
+{% endif %}
+{% endblock %}

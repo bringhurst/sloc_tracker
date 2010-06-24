@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Segments</h2>
+{% if segments %}
+<ul>
+    {% for segment in segments %}
+    <li><a href="/sloc/segment/{{ segment.id }}/detail">{{ segment.name }}</a></li>
+    {% endfor %}
+</ul>
+{% else %}
+<p>No segments are available.</p>
+{% endif %}
+<h2>Languages</h2>
+{% if languages %}
+<ul>
+    {% for language in languages %}
+    <li><a href="/sloc/language/{{ language.id }}/detail">{{ language.name }}</a></li>
+    {% endfor %}
+</ul>
+{% else %}
+<p>No languages are available.</p>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,3 @@
+"name","description","sloc_generated_for_date","sloc","segment","reported_by","sloc_type","sloc_entered_to_database_date"
+{% for sloc in slocs %}"{{language.name}}","{{language.description}}","{{sloc.generated_date.date}}","{{sloc.source_lines_of_code}}","{{sloc.segment}}","{{ sloc.reported_by }}","{{sloc.sloc_type}}","{{sloc.created_date}}"
+{% endfor %}
